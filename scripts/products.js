@@ -1,41 +1,84 @@
 "use strict";
+const mode = document.getElementById("mode");
+    const results = document.getElementById("results");
+    let select = undefined; //global scope
 
-function loadAllProducts() {
-  fetch("http://localhost:8081/api/products")
-    .then((response) => response.json())
-    .then((data) => {
-      data.forEach((data) => {
-        const results = document.getElementById("results");
-        buildProductCard(data, results);
-      });
-    });
-}
-function buildProductCard(data, product) {
-  let colDiv = document.createElement("div");
-  colDiv.className = "row";
+    function compareName(a, b) {
+        if (a.productName < b.productName) {
+            return -1;
+        } else if (a.productName > b.productName) {
+            return 1;
+        } else {
+            return 0; // a must be equal to b
+        }
+    }
 
-  const div = document.createElement("div");
-  div.className = "card col my-4";
-  div.style = "width: 22em;";
-  product.appendChild(colDiv);
-  colDiv.appendChild(div);
+    function productLink(p) {
+        const d = document.createElement("div");
+        d.classList.add("product");
+        d.innerHTML = `
+            <a href="detail.html?id=${p.productId}"> 
+                <img src="images/c${p.categoryId}.png" class="icon">  
+                ${p.productName} 
+            </a>
+                `;
+        return d
+    }
 
-  const cardBody = document.createElement("div");
-  cardBody.className = "card-body";
-  div.appendChild(cardBody);
+    function showAll() {
+        results.innerHTML = "";
+        fetch("http://localhost:8081/api/products")
+            .then(response => response.json())
+            .then(data => {
+                data.sort(compareName);
+                data.forEach(p => {
+                    results.appendChild(productLink(p));
+                })
+            })
+    }
+    function showResults() {
+        results.innerHTML = "";
+        const id = select.selectedOptions[0].value;
+        results.innerHTML = `<img src="images/c${id}.png"><br>`;
+        fetch("http://localhost:8081/api/categories/" + id)
+            .then(response => response.json())
+            .then(data => {
+                data.sort(compareName);
+                data.forEach(p => {
+                    results.appendChild(productLink(p));
+                })
+            })
+    }
+    function createSelect() {
+        select = document.createElement("select");
+        fetch("http://localhost:8081/api/categories")
+            .then(response => response.json())
+            .then(data => {
+                select.innerHTML = `<option value="0">Select a Category:</option>`;
+                data.forEach(c => {
+                    const option = document.createElement("option");
+                    option.value = c.categoryId;
+                    option.innerHTML = c.name;
+                    select.appendChild(option);
+                })
+                select.addEventListener("change", e => showResults())
+                mode.after(select);//insert new select after the mode select.
+                // document.body.appendChild(select);
+            })
+    }
 
-  const cardTitle = document.createElement("div");
-  cardTitle.className = "card-title p-3";
-  cardTitle.innerHTML = `<a href="product.html?id=${data.productId}">${data.productName}</a>`;
-  cardBody.appendChild(cardTitle);
-
-  const cardText = document.createElement("p");
-  cardText.className = "card-text";
-  cardText.innerText = `Price: $${parseFloat(data.unitPrice).toFixed(2)}
-  In Stock: ${data.unitsInStock}`;
-  cardBody.appendChild(cardText);
-
-}
-window.onload = () => {
-  loadAllProducts();
-};
+    mode.addEventListener("change", e => {
+        const value = mode.selectedOptions[0].value;
+        if ("category" == value) {
+            results.innerHTML = "";
+            //create select
+            createSelect();
+        } else {
+            showAll();
+            //destroy select
+            if (undefined !== select) {
+                select.remove();
+            }
+        }
+    })
+    mode.selectedIndex= 0;

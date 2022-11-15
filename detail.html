@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Document</title>
-</head>
+<html>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Bryan's Grocery</title>
+
+    <link rel="stylesheet" href="styles/main.css">
+</head>
 <body>
-    <h1>Detail</h1>
-    <a href="index.html">Home</a>
-    <a href="products.html">Product Search</a>
-    <div id="results">Results</div>
+    <h1>details</h1>
+    <a href="index.html">home</a>
+    <a href="products.html">Products</a>
+    <div id="results"></div>
 </body>
 <script>
     /*
-let params = (new URL(document.location)).searchParams;
-let name = params.get('name');
-*/
+    let params = (new URL(document.location)).searchParams;
+    let name = params.get('name');
+    */
 
     let params = (new URL(document.location)).searchParams;
     let id = params.get('id');
@@ -32,7 +34,7 @@ let name = params.get('name');
                 const d = document.createElement("div");
                 d.innerHTML = `ID: ${p.productId} <br> NAME: ${p.productName}`;
                 results.appendChild(d);
-        })
+            })
 
 </script>
 </html>

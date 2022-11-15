@@ -7,88 +7,95 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <title>Bryan's Grocery</title>
+    <title>Grocery</title>
 
     <link rel="stylesheet" href="styles/main.css">
 
-    <script src="https://kit.fontawesome.com/c26cd2166c.js"></script>
-    <script src="scripts/main.js"></script>
+
 </head>
 
 <body>
-    <nav id="nav" class="navbar" style="background: #15632a">
-        <div id="menuBtn" class="menuBtn" onclick="menuBarChange(this)">
-            <div id="menuBar1" class="menuBar1"></div>
-            <div id="menuBar2" class="menuBar2"></div>
-            <div id="menuBar3" class="menuBar3"></div>
+    <nav id="nav" class="navbar" style="background: rgb(74, 160, 74); ">
+        <a class="navbar-brand" style="color:aliceblue" href="index.html">NWG</a>
+        <div>
+            <a id="pro" href="products.html">Products</a>
+            <a id="det" href="detail.html">Search</a>
         </div>
     </nav>
-    <!--                MAIN                        -->
+   
     <section class="main">
         <container>
             <div class="row pt-5">
                 <div class="col-lg-6 pt-5">
-                    <h1 style="text-align: center; color: #25597C;">Northwind Grocery</h1>
-                    <h6 style="text-align: center; color: #25597C;">Here to produce your produce!</h5>
+                    <h1 style="text-align: center; color: #02080c;">Northwind Grocery</h1>
+                    <h6 style="text-align: center; color: #02080c;">For your Supply</h5>
                 </div>
             </div>
         </container>
     </section>
-<!--               BODY                      -->
-    <section>
-        <div class="row px-5">
-            <div class="col py-3" id="btnContain">
-                <a href="products.html">
-                    <button class="prdctEnterBtn">
-                        <img src="https://t3.ftcdn.net/jpg/03/66/74/04/360_F_366740492_5shEzroq93FOLzbIshbNlWl2ezT7iq5e.jpg" id="btnImg"><br>
-                        Products
-                    </button>
-                </a>
-            </div>
-    </section>
-     <!-- ========================Bottom of Page============================== -->
+    
+    
 
-     <section class="news pt-5">
+        <span id="btnContainer">
+            <a href="products.html">
+                <button class="productbtn">
+                    <img src="images/basket.png" id="btnImg"><br>
+                    Products
+                </button>
+            </a>
+            
+            <span class="speach">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, animi voluptates. Iusto hic aperiam recusandae veritatis, beatae velit vel saepe praesentium sit pariatur?</span>
+        </span>
+    
+    
+    
+
+    <section class="news pt-5">
         <div class="container-fluid pt-3 text-black">
-          <div class="row">
-            <div class="col-lg-11 m-auto">
-              <div class="row">
-                <div class="col-lg-2">
-                  <h3 class="pb-3">Category</h3>
-                  <p class="m-0"><a href="index.html">Home!</a></p>
-                  <p class="m-0"><a href="parks.html">Our Product!</a></p>
+            <div class="row">
+                <div class="col-lg-11 m-auto">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <h3 class="pb-3">Category</h3>
+                            <p class="m-0"><a href="index.html">Home</a></p>
+                            <p class="m-0"><a href="products.html">Inventory</a></p>
+                            <p class="m-0"><a href="detail.html">details </a></p>
+                        </div>
+                        <div class="col-lg-2">
+                            <h3 class="pb-3">About Us</h3>
+                            <p class="m-0"><a href="#">Our Story</a></p>
+                            <p class="m-0"><a href="#">Events</a></p>
+                            
+                        </div>
+                        <div class="col-lg-3">
+                            <h3 class="pb-3">Contact Us</h3>
+                            <p>
+                                1-800-352-3265
+                                <br>
+                                <a href="#">NorthwindGrocery@gmail.com</a>
+                                
+                            </p>
+
+                            
+                        </div>
+                        <div class="col-lg-5">
+                            <h3 class="pb-3">Newsletter</h3>
+
+                            <form action="" class="d-flex">
+                                <input type="text" class="sub p-3" placeholder="Enter Your Email">
+                                <button class="btns">Subscribe</button>
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                  <h3 class="pb-3">Company</h3>
-                  <p class="m-0"><a href="#">About</a></p>
-                  <p class="m-0"><a href="#">News</a></p>
-                  <p class="m-0"><a href="#">FAQs</a></p>
-                  <p class="m-0"><a href="#">Contact</a></p>
-                </div>
-                <div class="col-lg-3">
-                  <h3 class="pb-3">Location</h3>
-                  <p>3030, This Weeb Ave, Tampa Fl<br>
-                    1-800-123-1235</p>
-  
-                    <a href="#">northwindGrocery@food.com</a>
-                </div>
-                <div class="col-lg-5">
-                  <h3 class="pb-3">Newsletter</h3>
-  
-                  <form action="" class="d-flex">
-                    <input type="text" class="sub p-3" placeholder="Enter Your Email">
-                    <button class="btns">Subscribe</button>
-                  </form>
-  
-                  </div>
-                </div>
-              </div>
-              <hr>
-              <p class="text-center pb-3 Copy">Copyright All rights reserved | This template is made with by PEO WEB</p>
+                <hr>
+                <p class="text-center pb-3 Copy">| Copyright All rights reserved | 
+                </p>
             </div>
-          </div>
         </div>
-      </section>
+        </div>
+    </section>
 </body>
 
 </html>

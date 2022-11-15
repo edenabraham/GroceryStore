@@ -1,0 +1,30 @@
+body{
+    background-color: blanchedalmond;
+}
+.productbtn{
+border: none;
+display:inline-block;
+padding: 1em;
+margin-left: 1.3em;
+}
+
+.speach{
+    display: block;
+}
+
+#nav{
+    padding: 1em;
+    
+}
+#home{
+    margin: 1em;
+    color: aliceblue;
+}
+#pro{
+    margin: 1em;
+    color: aliceblue;
+}
+#det{
+    margin: 1em;
+    color: aliceblue;
+}

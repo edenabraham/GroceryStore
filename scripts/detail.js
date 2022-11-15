@@ -1,46 +1,26 @@
-//Nav Bar
-function menuBarChange(x) {
-    x.classList.toggle("change");
+let params = (new URL(document.location)).searchParams;
+let id = params.get('id');
+
+const results = document.getElementById("results");
+
+function details(product){
+    const price = Number(product.unitPrice).toFixed(2);
+    const d = document.createElement("div");
+    d.classList.add("details");
+    d.innerHTML = `<img src="images/c${product.categoryId}.png"><br>`
+
+    d.innerHTML += `<table>
+        <tr><th> PROPERTY    </th><th> VALUE    </th></tr>
+        <tr><th> ID    </th><td> ${product.productId}    </td></tr>
+        <tr><th> NAME  </th><td> ${product.productName}  </td></tr>
+        <tr><th> Price </th><td> $${price}               </td></tr>
+        <tr><th> Stock </th><td> ${product.unitsInStock} </td></tr>
+    </table>`;
+    return d;
 }
-
-const navURLs = [
-    { name: "About Us", url: "#" },
-    { name: "Products", url: "products.html" },
-];
-
-const navIcons = [
-    {classList: "fab fa-opencart px-3", url: "#"},
-    {classList: "far fa-user", url: "#"},
-    {classList: "subtitle px-3", url: "#"}
-]
-
-function navLink(item) {
-    const div = document.createElement("div");
-    div.classList.add("nav-block");
-    const a = document.createElement("a");
-    a.href = item.url;
-    div.innerHTML = item.name;
-    a.appendChild(div);
-    return a;
-}
-
-function createNavIcon(icon){
-    const span = document.createElement("span");
-    const a = document.createElement("a");
-    const i = document.createElement("i");
-    a.href = icon.url;
-    span.setAttribute("class", icon.classList);
-    span.appendChild(i);
-    a.appendChild(span);
-    
-    return a;
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const nav = document.getElementById("nav");
-    navURLs.forEach(item => nav.appendChild(navLink(item)));
-
-    const form = document.createElement("form");
-    navIcons.forEach(icon => form.appendChild(createNavIcon(icon)));
-    nav.appendChild(form);
-});
+results.innerHTML = "";
+fetch("http://localhost:8081/api/products/" + id)
+    .then(response => response.json())
+    .then(p => {
+            results.appendChild(details(p));
+    })
